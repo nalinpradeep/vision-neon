@@ -12,7 +12,7 @@ using namespace cv;
 namespace vision {
 
 #ifdef __ARM_NEON__
-void ad_copyImage_neon32(unsigned char* src,unsigned int step,unsigned int height,unsigned char*dst){
+void copyImage_neon32(unsigned char* src,unsigned int step,unsigned int height,unsigned char*dst){
 	unsigned char* data = src; 
     unsigned char* out = dst; 
     unsigned int _isize = step*height,i;
@@ -27,14 +27,14 @@ void ad_copyImage_neon32(unsigned char* src,unsigned int step,unsigned int heigh
     }
 }
 
-void ad_copyImage_neon32(const cv::Mat& src,cv::Mat& dst){
+void copyImage_neon32(const cv::Mat& src,cv::Mat& dst){
 	if(dst.empty())
 		dst.create(src.rows,src.cols,src.type());
-	ad_copyImage_neon32(src.data,src.step,src.rows,dst.data);		
+	copyImage_neon32(src.data,src.step,src.rows,dst.data);
 }
 
     
-void ad_convertToGray_neon32(const cv::Mat& src,cv::Mat& dst){
+void convertToGray_neon32(const cv::Mat& src,cv::Mat& dst){
 	if(dst.empty()) 
 		dst.create(src.rows,src.cols,CV_8UC1);
     unsigned int _isize = src.step*src.rows,i;
@@ -62,7 +62,7 @@ void ad_convertToGray_neon32(const cv::Mat& src,cv::Mat& dst){
 	}
 }
 	
-    void ad_downsampleBy2_BGRA_neon64(const cv::Mat& src,cv::Mat& dst){
+    void downsampleBy2_BGRA_neon64(const cv::Mat& src,cv::Mat& dst){
         unsigned int x,x32,y;
         unsigned int _h=src.rows,_s=src.step,_w = src.cols<<2;
         unsigned int _2s = _s<<1;
@@ -114,7 +114,7 @@ void ad_convertToGray_neon32(const cv::Mat& src,cv::Mat& dst){
     }
     
 	
-    void ad_downsampleBy2_Gray_neon32(const cv::Mat& src,cv::Mat& dst){
+    void downsampleBy2_Gray_neon32(const cv::Mat& src,cv::Mat& dst){
         size_t x,y;
         size_t _w = src.cols,_h=src.rows,_s=src.step;
         size_t _2s = _s<<1;
@@ -153,7 +153,7 @@ void ad_convertToGray_neon32(const cv::Mat& src,cv::Mat& dst){
         }
     }
 
-    void ad_downsampleBy4_Gray_neon64(const cv::Mat& src,cv::Mat& dst){
+    void downsampleBy4_Gray_neon64(const cv::Mat& src,cv::Mat& dst){
         unsigned int x,y,x32;
         unsigned int _w = src.cols,_h=src.rows,_s=src.step;
         unsigned int _4s = _s<<2;

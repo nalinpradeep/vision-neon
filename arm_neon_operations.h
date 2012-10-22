@@ -27,14 +27,14 @@
 #include <opencv/cv.h>
 
 namespace vision{
-    void ad_copyImage_neon32(const cv::Mat& src,cv::Mat& dst);
-    void ad_copyImage_neon32(unsigned char* src,unsigned int step,unsigned int height,unsigned char*dst);
+    void copyImage_neon32(const cv::Mat& src,cv::Mat& dst);
+    void copyImage_neon32(unsigned char* src,unsigned int step,unsigned int height,unsigned char*dst);
 	
-    void ad_convertToGray_neon32(const cv::Mat& src,cv::Mat& dst);
+    void convertToGray_neon32(const cv::Mat& src,cv::Mat& dst);
     
-    void ad_downsampleBy2_BGRA_neon64(const cv::Mat& src,cv::Mat& dst);
-    void ad_downsampleBy2_Gray_neon32(const cv::Mat& src,cv::Mat& dst);
-    void ad_downsampleBy4_Gray_neon64(const cv::Mat& src,cv::Mat& dst);
+    void downsampleBy2_BGRA_neon64(const cv::Mat& src,cv::Mat& dst);
+    void downsampleBy2_Gray_neon32(const cv::Mat& src,cv::Mat& dst);
+    void downsampleBy4_Gray_neon64(const cv::Mat& src,cv::Mat& dst);
 }
 
 #endif
